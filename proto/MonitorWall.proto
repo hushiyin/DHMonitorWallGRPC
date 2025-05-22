@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package MonitorWall;
+
+/**
+* ip：192.168.17.63
+* port:50051
+*/
+
+//定义方法
+service SWKJMonitorWall{
+    rpc login (loginRequest) returns (empty) {}                 //登录解码器
+    rpc getTVNum (empty) returns (decoderOutTVNumResponse) {}   //获取解码器输出通道数
+    rpc createWall (wallConfigRequest) returns (empty) {}       //创建电视墙
+}
+
+//用于没有参数或者没有返回值的方法
+message empty {}
+
+/**
+* @brief 登录解码器
+* @decoder_ip IP地址
+* @decoder_port 端口
+* @decoder_username 用户名
+* @decoder_pwd 密码
+*/
+message loginRequest{
+    string decoder_ip = 1;
+    uint32 decoder_port = 2;
+    string decoder_username = 3;
+    string decoder_pwd = 4;
+}
+
+//获取输出口
+message decoderOutTVNumResponse{
+    int32 tv_num = 1;
+}
+
+/**
+* @brief block的坐标和需要绑定的输出口通道号
+* @bind_line 电视墙行坐标
+* @bind_col 电视墙列坐标
+* @bind_ch 解码器输出口通道号
+*/
+*message blockMes{
+    int32 bind_line = 1;
+    int32 bind_col = 2;
+    int32 bind_ch = 3;
+}
+
+/**
+* @brief 创建电视墙
+* @line 电视墙行数
+* @colunm 电视墙列数
+* @block block的坐标和需要绑定的输出口通道号
+*/
+message wallConfigRequest{
+    int32 line = 1;
+    int32 colunm = 2;
+    repeated blockMes block = 3;
+}
