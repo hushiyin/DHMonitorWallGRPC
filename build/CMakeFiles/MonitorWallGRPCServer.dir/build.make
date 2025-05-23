@@ -96,22 +96,9 @@ CMakeFiles/MonitorWallGRPCServer.dir/src/GRPCServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MonitorWallGRPCServer.dir/src/GRPCServer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/swkj/MonitorWallGRPCServer/src/GRPCServer.cpp -o CMakeFiles/MonitorWallGRPCServer.dir/src/GRPCServer.cpp.s
 
-CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o: CMakeFiles/MonitorWallGRPCServer.dir/flags.make
-CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o: ../src/SWKJ_Decoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o -c /home/swkj/MonitorWallGRPCServer/src/SWKJ_Decoder.cpp
-
-CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/swkj/MonitorWallGRPCServer/src/SWKJ_Decoder.cpp > CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.i
-
-CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/swkj/MonitorWallGRPCServer/src/SWKJ_Decoder.cpp -o CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.s
-
 CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o: CMakeFiles/MonitorWallGRPCServer.dir/flags.make
 CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o: ../src/Utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o -c /home/swkj/MonitorWallGRPCServer/src/Utils.cpp
 
 CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.i: cmake_force
@@ -124,7 +111,7 @@ CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.s: cmake_force
 
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o: CMakeFiles/MonitorWallGRPCServer.dir/flags.make
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o: ../src/MonitorWall.grpc.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o -c /home/swkj/MonitorWallGRPCServer/src/MonitorWall.grpc.pb.cc
 
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.i: cmake_force
@@ -137,7 +124,7 @@ CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.s: cmake_force
 
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o: CMakeFiles/MonitorWallGRPCServer.dir/flags.make
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o: ../src/MonitorWall.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o -c /home/swkj/MonitorWallGRPCServer/src/MonitorWall.pb.cc
 
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.i: cmake_force
@@ -153,7 +140,6 @@ MonitorWallGRPCServer_OBJECTS = \
 "CMakeFiles/MonitorWallGRPCServer.dir/src/CallbackFunc.cpp.o" \
 "CMakeFiles/MonitorWallGRPCServer.dir/src/DHDecoder.cpp.o" \
 "CMakeFiles/MonitorWallGRPCServer.dir/src/GRPCServer.cpp.o" \
-"CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o" \
 "CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o" \
 "CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o" \
 "CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o"
@@ -164,7 +150,6 @@ MonitorWallGRPCServer_EXTERNAL_OBJECTS =
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/CallbackFunc.cpp.o
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/DHDecoder.cpp.o
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/GRPCServer.cpp.o
-MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o
@@ -201,7 +186,7 @@ MonitorWallGRPCServer: /usr/local/lib/libz.a
 MonitorWallGRPCServer: /usr/local/lib/libcares.a
 MonitorWallGRPCServer: /usr/local/lib/libaddress_sorting.a
 MonitorWallGRPCServer: CMakeFiles/MonitorWallGRPCServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable MonitorWallGRPCServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/swkj/MonitorWallGRPCServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable MonitorWallGRPCServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MonitorWallGRPCServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -10,7 +10,7 @@ package MonitorWall;
 //定义方法
 service SWKJMonitorWall{
     rpc login (loginRequest) returns (empty) {}                 //登录解码器
-    rpc getTVNum (empty) returns (decoderOutTVNumResponse) {}   //获取解码器输出通道数
+    rpc getTVNum (loginRequest) returns (decoderOutTVNumResponse) {}   //获取解码器输出通道数
     rpc createWall (wallConfigRequest) returns (empty) {}       //创建电视墙
 }
 
@@ -34,6 +34,7 @@ message loginRequest{
 //获取输出口
 message decoderOutTVNumResponse{
     int32 tv_num = 1;
+    loginRequest login_res= 2;
 }
 
 /**
@@ -42,7 +43,7 @@ message decoderOutTVNumResponse{
 * @bind_col 电视墙列坐标
 * @bind_ch 解码器输出口通道号
 */
-*message blockMes{
+message blockMes{
     int32 bind_line = 1;
     int32 bind_col = 2;
     int32 bind_ch = 3;
@@ -58,4 +59,5 @@ message wallConfigRequest{
     int32 line = 1;
     int32 colunm = 2;
     repeated blockMes block = 3;
+    loginRequest login_res = 4;
 }

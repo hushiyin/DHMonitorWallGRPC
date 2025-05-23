@@ -485,8 +485,24 @@ class decoderOutTVNumResponse :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kLoginResFieldNumber = 2,
     kTvNumFieldNumber = 1,
   };
+  // .MonitorWall.loginRequest login_res = 2;
+  bool has_login_res() const;
+  private:
+  bool _internal_has_login_res() const;
+  public:
+  void clear_login_res();
+  const ::MonitorWall::loginRequest& login_res() const;
+  ::MonitorWall::loginRequest* release_login_res();
+  ::MonitorWall::loginRequest* mutable_login_res();
+  void set_allocated_login_res(::MonitorWall::loginRequest* login_res);
+  private:
+  const ::MonitorWall::loginRequest& _internal_login_res() const;
+  ::MonitorWall::loginRequest* _internal_mutable_login_res();
+  public:
+
   // int32 tv_num = 1;
   void clear_tv_num();
   ::PROTOBUF_NAMESPACE_ID::int32 tv_num() const;
@@ -501,6 +517,7 @@ class decoderOutTVNumResponse :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::MonitorWall::loginRequest* login_res_;
   ::PROTOBUF_NAMESPACE_ID::int32 tv_num_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_MonitorWall_2eproto;
@@ -764,6 +781,7 @@ class wallConfigRequest :
 
   enum : int {
     kBlockFieldNumber = 3,
+    kLoginResFieldNumber = 4,
     kLineFieldNumber = 1,
     kColunmFieldNumber = 2,
   };
@@ -784,6 +802,21 @@ class wallConfigRequest :
   ::MonitorWall::blockMes* add_block();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::MonitorWall::blockMes >&
       block() const;
+
+  // .MonitorWall.loginRequest login_res = 4;
+  bool has_login_res() const;
+  private:
+  bool _internal_has_login_res() const;
+  public:
+  void clear_login_res();
+  const ::MonitorWall::loginRequest& login_res() const;
+  ::MonitorWall::loginRequest* release_login_res();
+  ::MonitorWall::loginRequest* mutable_login_res();
+  void set_allocated_login_res(::MonitorWall::loginRequest* login_res);
+  private:
+  const ::MonitorWall::loginRequest& _internal_login_res() const;
+  ::MonitorWall::loginRequest* _internal_mutable_login_res();
+  public:
 
   // int32 line = 1;
   void clear_line();
@@ -809,6 +842,7 @@ class wallConfigRequest :
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::MonitorWall::blockMes > block_;
+  ::MonitorWall::loginRequest* login_res_;
   ::PROTOBUF_NAMESPACE_ID::int32 line_;
   ::PROTOBUF_NAMESPACE_ID::int32 colunm_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1053,6 +1087,66 @@ inline void decoderOutTVNumResponse::set_tv_num(::PROTOBUF_NAMESPACE_ID::int32 v
   // @@protoc_insertion_point(field_set:MonitorWall.decoderOutTVNumResponse.tv_num)
 }
 
+// .MonitorWall.loginRequest login_res = 2;
+inline bool decoderOutTVNumResponse::_internal_has_login_res() const {
+  return this != internal_default_instance() && login_res_ != nullptr;
+}
+inline bool decoderOutTVNumResponse::has_login_res() const {
+  return _internal_has_login_res();
+}
+inline void decoderOutTVNumResponse::clear_login_res() {
+  if (GetArenaNoVirtual() == nullptr && login_res_ != nullptr) {
+    delete login_res_;
+  }
+  login_res_ = nullptr;
+}
+inline const ::MonitorWall::loginRequest& decoderOutTVNumResponse::_internal_login_res() const {
+  const ::MonitorWall::loginRequest* p = login_res_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::MonitorWall::loginRequest*>(
+      &::MonitorWall::_loginRequest_default_instance_);
+}
+inline const ::MonitorWall::loginRequest& decoderOutTVNumResponse::login_res() const {
+  // @@protoc_insertion_point(field_get:MonitorWall.decoderOutTVNumResponse.login_res)
+  return _internal_login_res();
+}
+inline ::MonitorWall::loginRequest* decoderOutTVNumResponse::release_login_res() {
+  // @@protoc_insertion_point(field_release:MonitorWall.decoderOutTVNumResponse.login_res)
+  
+  ::MonitorWall::loginRequest* temp = login_res_;
+  login_res_ = nullptr;
+  return temp;
+}
+inline ::MonitorWall::loginRequest* decoderOutTVNumResponse::_internal_mutable_login_res() {
+  
+  if (login_res_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MonitorWall::loginRequest>(GetArenaNoVirtual());
+    login_res_ = p;
+  }
+  return login_res_;
+}
+inline ::MonitorWall::loginRequest* decoderOutTVNumResponse::mutable_login_res() {
+  // @@protoc_insertion_point(field_mutable:MonitorWall.decoderOutTVNumResponse.login_res)
+  return _internal_mutable_login_res();
+}
+inline void decoderOutTVNumResponse::set_allocated_login_res(::MonitorWall::loginRequest* login_res) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete login_res_;
+  }
+  if (login_res) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      login_res = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, login_res, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  login_res_ = login_res;
+  // @@protoc_insertion_point(field_set_allocated:MonitorWall.decoderOutTVNumResponse.login_res)
+}
+
 // -------------------------------------------------------------------
 
 // blockMes
@@ -1198,6 +1292,66 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::MonitorWall::blockMes 
 wallConfigRequest::block() const {
   // @@protoc_insertion_point(field_list:MonitorWall.wallConfigRequest.block)
   return block_;
+}
+
+// .MonitorWall.loginRequest login_res = 4;
+inline bool wallConfigRequest::_internal_has_login_res() const {
+  return this != internal_default_instance() && login_res_ != nullptr;
+}
+inline bool wallConfigRequest::has_login_res() const {
+  return _internal_has_login_res();
+}
+inline void wallConfigRequest::clear_login_res() {
+  if (GetArenaNoVirtual() == nullptr && login_res_ != nullptr) {
+    delete login_res_;
+  }
+  login_res_ = nullptr;
+}
+inline const ::MonitorWall::loginRequest& wallConfigRequest::_internal_login_res() const {
+  const ::MonitorWall::loginRequest* p = login_res_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::MonitorWall::loginRequest*>(
+      &::MonitorWall::_loginRequest_default_instance_);
+}
+inline const ::MonitorWall::loginRequest& wallConfigRequest::login_res() const {
+  // @@protoc_insertion_point(field_get:MonitorWall.wallConfigRequest.login_res)
+  return _internal_login_res();
+}
+inline ::MonitorWall::loginRequest* wallConfigRequest::release_login_res() {
+  // @@protoc_insertion_point(field_release:MonitorWall.wallConfigRequest.login_res)
+  
+  ::MonitorWall::loginRequest* temp = login_res_;
+  login_res_ = nullptr;
+  return temp;
+}
+inline ::MonitorWall::loginRequest* wallConfigRequest::_internal_mutable_login_res() {
+  
+  if (login_res_ == nullptr) {
+    auto* p = CreateMaybeMessage<::MonitorWall::loginRequest>(GetArenaNoVirtual());
+    login_res_ = p;
+  }
+  return login_res_;
+}
+inline ::MonitorWall::loginRequest* wallConfigRequest::mutable_login_res() {
+  // @@protoc_insertion_point(field_mutable:MonitorWall.wallConfigRequest.login_res)
+  return _internal_mutable_login_res();
+}
+inline void wallConfigRequest::set_allocated_login_res(::MonitorWall::loginRequest* login_res) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete login_res_;
+  }
+  if (login_res) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      login_res = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, login_res, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  login_res_ = login_res;
+  // @@protoc_insertion_point(field_set_allocated:MonitorWall.wallConfigRequest.login_res)
 }
 
 #ifdef __GNUC__

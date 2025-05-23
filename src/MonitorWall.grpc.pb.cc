@@ -67,11 +67,11 @@ void SWKJMonitorWall::Stub::experimental_async::login(::grpc::ClientContext* con
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::MonitorWall::empty>::Create(channel_.get(), cq, rpcmethod_login_, context, request, false);
 }
 
-::grpc::Status SWKJMonitorWall::Stub::getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::MonitorWall::decoderOutTVNumResponse* response) {
+::grpc::Status SWKJMonitorWall::Stub::getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::MonitorWall::decoderOutTVNumResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getTVNum_, context, request, response);
 }
 
-void SWKJMonitorWall::Stub::experimental_async::getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)> f) {
+void SWKJMonitorWall::Stub::experimental_async::getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getTVNum_, context, request, response, std::move(f));
 }
 
@@ -79,7 +79,7 @@ void SWKJMonitorWall::Stub::experimental_async::getTVNum(::grpc::ClientContext* 
   ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getTVNum_, context, request, response, std::move(f));
 }
 
-void SWKJMonitorWall::Stub::experimental_async::getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void SWKJMonitorWall::Stub::experimental_async::getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_getTVNum_, context, request, response, reactor);
 }
 
@@ -87,11 +87,11 @@ void SWKJMonitorWall::Stub::experimental_async::getTVNum(::grpc::ClientContext* 
   ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_getTVNum_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* SWKJMonitorWall::Stub::AsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* SWKJMonitorWall::Stub::AsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::MonitorWall::decoderOutTVNumResponse>::Create(channel_.get(), cq, rpcmethod_getTVNum_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* SWKJMonitorWall::Stub::PrepareAsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* SWKJMonitorWall::Stub::PrepareAsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::MonitorWall::decoderOutTVNumResponse>::Create(channel_.get(), cq, rpcmethod_getTVNum_, context, request, false);
 }
 
@@ -132,7 +132,7 @@ SWKJMonitorWall::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SWKJMonitorWall_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< SWKJMonitorWall::Service, ::MonitorWall::empty, ::MonitorWall::decoderOutTVNumResponse>(
+      new ::grpc::internal::RpcMethodHandler< SWKJMonitorWall::Service, ::MonitorWall::loginRequest, ::MonitorWall::decoderOutTVNumResponse>(
           std::mem_fn(&SWKJMonitorWall::Service::getTVNum), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SWKJMonitorWall_method_names[2],
@@ -151,7 +151,7 @@ SWKJMonitorWall::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status SWKJMonitorWall::Service::getTVNum(::grpc::ServerContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response) {
+::grpc::Status SWKJMonitorWall::Service::getTVNum(::grpc::ServerContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response) {
   (void) context;
   (void) request;
   (void) response;

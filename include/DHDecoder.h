@@ -30,7 +30,7 @@ public:
 	void getMonitorWallCfg();						//获取电视墙配置
 	void setMonitorWallCfg(AV_int32 line, AV_int32 column, std::vector<BindOutputTV>& vec);		//创建电视墙
 	void setStruct(std::shared_ptr<AV_CFG_MonitorWall> pstuWall, int blockNums, AV_int32 line, AV_int32 column, std::vector<BindOutputTV>& vec);	//绑定输出口
-	void TVSwitch();
+	void SplitTV();		//TV切割
 
 	//墙操作
 
@@ -45,17 +45,9 @@ public:
 	void openSplitWindow();							//自由分割模式下打开新窗口
 #endif
 
-
-	//实时预览相关（取前端摄像头的码流，暂时不用）
-	//typedef HWND(WINAPI* PROCGETCONSOLEWINDOW)();
-	//PROCGETCONSOLEWINDOW GetConsoleWindow;
-	void startPlayRealVideo();			//开启实时预览
-	void stopPlayRealVideo();			//停止实时预览
-
 public:
 	LLONG m_decoderLoginHandle;			//解码器登录句柄
 
-public:
 	//解码器相关信息
 	char m_decoderIp[64];
 	WORD m_decoderPort;					// tcp 连接端口，需与期望登录设备页面 tcp 端口配置一致

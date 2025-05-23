@@ -113,6 +113,12 @@ google/protobuf/port_undef.inc
 ../include/Utils.h
 iostream
 -
+vector
+-
+string.h
+-
+dhnetsdk.h
+../include/dhnetsdk.h
 
 ../include/dhconfigsdk.h
 windows.h
@@ -216,11 +222,13 @@ google/protobuf/port_def.inc
 google/protobuf/port_undef.inc
 -
 
-/home/swkj/MonitorWallGRPCServer/src/SWKJ_Decoder.cpp
-
 /home/swkj/MonitorWallGRPCServer/src/Utils.cpp
 fstream
 -
 Utils.h
 /home/swkj/MonitorWallGRPCServer/src/Utils.h
+vector
+-
+string
+-
 

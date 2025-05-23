@@ -28,6 +28,10 @@
 
 namespace MonitorWall {
 
+// *
+// ip：192.168.17.63
+// port:50051
+//
 // 定义方法
 class SWKJMonitorWall final {
  public:
@@ -44,11 +48,11 @@ class SWKJMonitorWall final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::empty>> PrepareAsynclogin(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::empty>>(PrepareAsyncloginRaw(context, request, cq));
     }
-    virtual ::grpc::Status getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::MonitorWall::decoderOutTVNumResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>> AsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::MonitorWall::decoderOutTVNumResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>> AsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>>(AsyncgetTVNumRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>> PrepareAsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>> PrepareAsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>>(PrepareAsyncgetTVNumRaw(context, request, cq));
     }
     virtual ::grpc::Status createWall(::grpc::ClientContext* context, const ::MonitorWall::wallConfigRequest& request, ::MonitorWall::empty* response) = 0;
@@ -73,12 +77,12 @@ class SWKJMonitorWall final {
       #else
       virtual void login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::MonitorWall::empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void getTVNum(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void getTVNum(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
@@ -108,8 +112,8 @@ class SWKJMonitorWall final {
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::empty>* AsyncloginRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::empty>* PrepareAsyncloginRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>* AsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>* PrepareAsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>* AsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::decoderOutTVNumResponse>* PrepareAsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::empty>* AsynccreateWallRaw(::grpc::ClientContext* context, const ::MonitorWall::wallConfigRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::MonitorWall::empty>* PrepareAsynccreateWallRaw(::grpc::ClientContext* context, const ::MonitorWall::wallConfigRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -123,11 +127,11 @@ class SWKJMonitorWall final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::empty>> PrepareAsynclogin(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::empty>>(PrepareAsyncloginRaw(context, request, cq));
     }
-    ::grpc::Status getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::MonitorWall::decoderOutTVNumResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>> AsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::MonitorWall::decoderOutTVNumResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>> AsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>>(AsyncgetTVNumRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>> PrepareAsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>> PrepareAsyncgetTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>>(PrepareAsyncgetTVNumRaw(context, request, cq));
     }
     ::grpc::Status createWall(::grpc::ClientContext* context, const ::MonitorWall::wallConfigRequest& request, ::MonitorWall::empty* response) override;
@@ -152,12 +156,12 @@ class SWKJMonitorWall final {
       #else
       void login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::MonitorWall::empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)>) override;
+      void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)>) override;
       void getTVNum(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::MonitorWall::decoderOutTVNumResponse* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void getTVNum(::grpc::ClientContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void getTVNum(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::MonitorWall::decoderOutTVNumResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
@@ -189,8 +193,8 @@ class SWKJMonitorWall final {
     class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::MonitorWall::empty>* AsyncloginRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::MonitorWall::empty>* PrepareAsyncloginRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* AsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* PrepareAsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* AsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::MonitorWall::decoderOutTVNumResponse>* PrepareAsyncgetTVNumRaw(::grpc::ClientContext* context, const ::MonitorWall::loginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::MonitorWall::empty>* AsynccreateWallRaw(::grpc::ClientContext* context, const ::MonitorWall::wallConfigRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::MonitorWall::empty>* PrepareAsynccreateWallRaw(::grpc::ClientContext* context, const ::MonitorWall::wallConfigRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_login_;
@@ -204,7 +208,7 @@ class SWKJMonitorWall final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status login(::grpc::ServerContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::empty* response);
-    virtual ::grpc::Status getTVNum(::grpc::ServerContext* context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response);
+    virtual ::grpc::Status getTVNum(::grpc::ServerContext* context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response);
     virtual ::grpc::Status createWall(::grpc::ServerContext* context, const ::MonitorWall::wallConfigRequest* request, ::MonitorWall::empty* response);
   };
   template <class BaseClass>
@@ -239,11 +243,11 @@ class SWKJMonitorWall final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
+    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestgetTVNum(::grpc::ServerContext* context, ::MonitorWall::empty* request, ::grpc::ServerAsyncResponseWriter< ::MonitorWall::decoderOutTVNumResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestgetTVNum(::grpc::ServerContext* context, ::MonitorWall::loginRequest* request, ::grpc::ServerAsyncResponseWriter< ::MonitorWall::decoderOutTVNumResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -327,38 +331,38 @@ class SWKJMonitorWall final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(1,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::MonitorWall::empty, ::MonitorWall::decoderOutTVNumResponse>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::MonitorWall::loginRequest, ::MonitorWall::decoderOutTVNumResponse>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::MonitorWall::empty* request, ::MonitorWall::decoderOutTVNumResponse* response) { return this->getTVNum(context, request, response); }));}
+                     context, const ::MonitorWall::loginRequest* request, ::MonitorWall::decoderOutTVNumResponse* response) { return this->getTVNum(context, request, response); }));}
     void SetMessageAllocatorFor_getTVNum(
-        ::grpc::experimental::MessageAllocator< ::MonitorWall::empty, ::MonitorWall::decoderOutTVNumResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::MonitorWall::loginRequest, ::MonitorWall::decoderOutTVNumResponse>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
     #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::MonitorWall::empty, ::MonitorWall::decoderOutTVNumResponse>*>(handler)
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::MonitorWall::loginRequest, ::MonitorWall::decoderOutTVNumResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_getTVNum() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
+    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* getTVNum(
-      ::grpc::CallbackServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* getTVNum(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -443,7 +447,7 @@ class SWKJMonitorWall final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
+    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -497,7 +501,7 @@ class SWKJMonitorWall final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
+    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -588,7 +592,7 @@ class SWKJMonitorWall final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
+    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -666,18 +670,18 @@ class SWKJMonitorWall final {
    public:
     WithStreamedUnaryMethod_getTVNum() {
       ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler< ::MonitorWall::empty, ::MonitorWall::decoderOutTVNumResponse>(std::bind(&WithStreamedUnaryMethod_getTVNum<BaseClass>::StreamedgetTVNum, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::MonitorWall::loginRequest, ::MonitorWall::decoderOutTVNumResponse>(std::bind(&WithStreamedUnaryMethod_getTVNum<BaseClass>::StreamedgetTVNum, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_getTVNum() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::empty* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
+    ::grpc::Status getTVNum(::grpc::ServerContext* /*context*/, const ::MonitorWall::loginRequest* /*request*/, ::MonitorWall::decoderOutTVNumResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedgetTVNum(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MonitorWall::empty,::MonitorWall::decoderOutTVNumResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedgetTVNum(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MonitorWall::loginRequest,::MonitorWall::decoderOutTVNumResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_createWall : public BaseClass {

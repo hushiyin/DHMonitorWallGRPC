@@ -277,33 +277,6 @@ src/MonitorWall.pb.cc.s:
 	$(MAKE) -f CMakeFiles/MonitorWallGRPCServer.dir/build.make CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.s
 .PHONY : src/MonitorWall.pb.cc.s
 
-src/SWKJ_Decoder.o: src/SWKJ_Decoder.cpp.o
-
-.PHONY : src/SWKJ_Decoder.o
-
-# target to build an object file
-src/SWKJ_Decoder.cpp.o:
-	$(MAKE) -f CMakeFiles/MonitorWallGRPCServer.dir/build.make CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o
-.PHONY : src/SWKJ_Decoder.cpp.o
-
-src/SWKJ_Decoder.i: src/SWKJ_Decoder.cpp.i
-
-.PHONY : src/SWKJ_Decoder.i
-
-# target to preprocess a source file
-src/SWKJ_Decoder.cpp.i:
-	$(MAKE) -f CMakeFiles/MonitorWallGRPCServer.dir/build.make CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.i
-.PHONY : src/SWKJ_Decoder.cpp.i
-
-src/SWKJ_Decoder.s: src/SWKJ_Decoder.cpp.s
-
-.PHONY : src/SWKJ_Decoder.s
-
-# target to generate assembly for a file
-src/SWKJ_Decoder.cpp.s:
-	$(MAKE) -f CMakeFiles/MonitorWallGRPCServer.dir/build.make CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.s
-.PHONY : src/SWKJ_Decoder.cpp.s
-
 src/Utils.o: src/Utils.cpp.o
 
 .PHONY : src/Utils.o
@@ -383,9 +356,6 @@ help:
 	@echo "... src/MonitorWall.pb.o"
 	@echo "... src/MonitorWall.pb.i"
 	@echo "... src/MonitorWall.pb.s"
-	@echo "... src/SWKJ_Decoder.o"
-	@echo "... src/SWKJ_Decoder.i"
-	@echo "... src/SWKJ_Decoder.s"
 	@echo "... src/Utils.o"
 	@echo "... src/Utils.i"
 	@echo "... src/Utils.s"

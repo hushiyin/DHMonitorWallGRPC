@@ -8,7 +8,6 @@ DHDecoder::DHDecoder(const char* ip, WORD port, const char* user, const char* pw
 	strcpy(m_decoderIp, ip);
 	strcpy(m_decoderName, user);
 	strcpy(m_decoderPwd, pwd);
-
 	m_decoderPort = port;
 
 	initSDK();
@@ -50,56 +49,6 @@ void DHDecoder::uninitSDK() {
 #endif
 }
 
-#ifndef REALPLAY
-void DHDecoder::startPlayRealVideo() {
-	//获取控制台窗口句柄
-	//HMODULE hKernel32 = GetModuleHandle(L"kernel32");
-	//GetConsoleWindow = (PROCGETCONSOLEWINDOW)GetProcAddress(hKernel32, "GetConsoleWindow");
-	//m_hWnd = GetConsoleWindow();
-
-	//开启实时预览
-	m_nChannelID = 0;
-	m_emRealPlayType = DH_RType_Realplay; // 实时预览
-
-	//m_lRealHandle = CLIENT_RealPlayEx(m_lLoginHandle, 0, m_hWnd, m_emRealPlayType);	//SDK解码播放
-	m_lRealHandle = CLIENT_RealPlayEx(m_cameraLoginHandle, 0, NULL, m_emRealPlayType);		//句柄传入NULL表示调用第三方接口播放
-	if (m_lRealHandle == 0)
-	{
-		std::cout << "play real video error,error code:" << getLastErrorCode() << std::endl;
-		return;
-	}
-	else
-	{
-		std::cout << "Real play handle:" << m_lRealHandle << std::endl;
-
-		DWORD dwFlag = 0x00000001;	//原始数据标志
-		if (FALSE == CLIENT_SetRealDataCallBackEx(m_lRealHandle, &RealDataCallBackEx, NULL, dwFlag)) {
-			std::cout << "CLIENT_SetRealDataCallBackEx:failed:Error code:" << getLastErrorCode() << std::endl;
-			return;
-		}
-		else
-		{
-			std::cout << "CLIENT_SetRealDataCallBackEx" << std::endl;
-		}
-	}
-}
-#endif
-  
-#ifndef REALPLAY
-void DHDecoder::stopPlayRealVideo() {
-	if (m_lRealHandle != 0) {
-		if (CLIENT_StopRealPlayEx(m_lRealHandle)) {		//成功返回TRUE，失败返回FALSE
-			std::cout << "stop play real video success!" << std::endl;
-			m_lRealHandle = 0;
-		}
-		else
-		{
-			std::cout << "stop play real video failed!" << getLastErrorCode() << std::endl;
-		}
-	}
-}
-#endif
-
 void DHDecoder::longinDev() {
 	NET_DEVICEINFO_Ex stDevInfo = { 0 };
 
@@ -129,6 +78,9 @@ void DHDecoder::longinDev() {
 	}
 
 	usleep(500);    //用户初次登录，需要进行一些初始化，建议等待一段时间
+
+	//设置异步回到函数
+	CLIENT_SetOperateCallBack(m_decoderLoginHandle, MessDataCallBackFunc, (LDWORD)0);
 	std::cout << std::endl;
 }
 
@@ -137,10 +89,8 @@ int DHDecoder::getLastErrorCode() {
 }
 
 int DHDecoder::queryDecoderInfo() {
-	if (m_decoderLoginHandle != 0) {
-		//设置异步回到函数
-		CLIENT_SetOperateCallBack(m_decoderLoginHandle, MessDataCallBackFunc, (LDWORD)0);
-
+	if (m_decoderLoginHandle != 0)
+	{
 		DEV_DECODER_INFO stDevDecoderInfo = { 0 };
 		BOOL bRet = CLIENT_QueryDecoderInfo(m_decoderLoginHandle, &stDevDecoderInfo, 2000);
 		if (bRet) {
@@ -157,7 +107,7 @@ void DHDecoder::queryDecoderChanel(int decoderID) {
 	BOOL bRet = CLIENT_QueryDecChannelFlux(m_decoderLoginHandle, decoderID, &stChannelState, 1000);//查询当前解码通道流信息
 	if (!bRet)
 	{
-		std::cout << "CLIENT_QueryDecChannelFlux failed!, error code:" << getLastErrorCode() << std::endl;	//21：对返回的数据校验出错
+		std::cout << "CLIENT_QueryDecChannelFlux failed!, error code:" << getLastErrorCode() << std::endl;
 	}
 	else
 	{
@@ -347,126 +297,8 @@ void DHDecoder::setStruct(std::shared_ptr<AV_CFG_MonitorWall> pstuWall, int bloc
 	}
 }
 
-#if 0
-template<class ...Args>
-void DHDecoder::setMonitorWallCfg(AV_int32 line, AV_int32 column, Args ...args)
-{
-	int decoderOutTVNums = queryDecoderInfo();
-
-	if(line*column > decoderOutTVNums)
-	{
-		std::cout<<"line*column must <= " << decoderOutTVNums <<std::endl;
-		return;
-	}
-
-	int blockNums = line*column;
-	if(sizeof...(args) != blockNums)	//获取参数包中参数的个数
-	{
-		std::cout<<"Args nums error!"<<std::endl;
-		return;
-	}
-
-	BindOutputTV stuBind[] = { args... };	//列表初始化
-
-	const int nMaxJsonLen = MAX_BUF_LEN;
-	std::shared_ptr<char[]> pszJsonBuf(new char[nMaxJsonLen]);
-
-	//Wall
-	auto pstuWall = std::make_shared<AV_CFG_MonitorWall>();
-	pstuWall->nStructSize = sizeof(AV_CFG_MonitorWall);
-	strcpy(pstuWall->szName, "monitorWall");
-	pstuWall->nLine = 1;
-	pstuWall->nColumn = 1;
-	pstuWall->nBlockCount = blockNums;
-	strcpy(pstuWall->szDesc, "MonitorWall");
-	pstuWall->nCoordinateType = 2;
-
-	//block
-	int endCol = 0;		//标记行
-	int endLine = 0;	//标记列
-	for(int i = 0; i < blockNums; i++){
-		AV_CFG_MonitorWallBlock& block = pstuWall->stuBlocks[i];
-		block.nStructSize = sizeof(AV_CFG_MonitorWallBlock);
-		block.nLine = 1;
-		block.nColumn = 1;
-		block.nTVCount = 1;
-		sprintf(block.szName, "block%d", i+1);
-		sprintf(block.szCompositeID, "Composite%d", i+1);
-
-		block.stuRect.nStructSize = sizeof(AV_CFG_Rect);
-		if(endCol < column)
-		{
-			//不换行，上/下边界的值不变（nTop nBottom）
-			block.stuRect.nLeft = endCol;
-			block.stuRect.nTop = endLine;
-			block.stuRect.nRight = endCol;
-			block.stuRect.nBottom = endLine;
-
-			endCol++;
-		}
-		else{
-			//换行
-			endCol = 0;
-			endLine++;
-
-			block.stuRect.nLeft = endCol;
-			block.stuRect.nTop = endLine;
-			block.stuRect.nRight = endCol;
-			block.stuRect.nBottom = endLine;
-
-			endCol++;
-		}
-
-		//TVOut
-		block.stuTVs[0].nStructSize = sizeof(AV_CFG_MonitorWallTVOut);
-		//绑定输出口
-		for(auto e : stuBind){
-			if(e.BindLine == block.stuRect.nTop && e.BindCol == block.stuRect.nLeft)
-			{
-				block.stuTVs[0].nChannelID = e.BindCh;
-			}
-		}
-		sprintf(block.stuTVs[0].szName, "screen%d", i+1);
-	}
-
-	//电视墙配置
-	if(CLIENT_PacketData(CFG_CMD_MONITORWALL, pstuWall.get(), sizeof(*pstuWall), pszJsonBuf.get(), nMaxJsonLen))
-	{
-		if(CLIENT_SetNewDevConfig(m_decoderLoginHandle, CFG_CMD_MONITORWALL, -1, pszJsonBuf.get(), strlen(pszJsonBuf.get()), NULL, NULL, WAIT_TIME))
-		{
-			std::cout<<"MonitorWall config success!"<<std::endl;
-#if 0
-			//融合屏配置
-			std::shared_ptr<AV_CFG_SpliceScreen[]> pScreens(new AV_CFG_SpliceScreen[block.nTVCount]);
-
-			for(int j = 0; j < block.nTVCount; j++)
-			{
-				pScreens[j].nStructSize = sizeof(AV_CFG_SpliceScreen);
-				strcpy(pScreens[j].szWallName, pstuWall->szName);
-				strcpy(pScreens[j].szName, pstuWall->stuBlocks[j].szName);
-				pScreens[j].nBlockID = j;
-			}
-
-			if (CLIENT_PacketData(CFG_CMD_SPLICESCREEN, (char*)pScreens.get(), sizeof(AV_CFG_SpliceScreen)*block.nTVCount, pszJsonBuf.get(), nMaxJsonLen))
-			{
-				if (CLIENT_SetNewDevConfig(m_decoderLoginHandle, CFG_CMD_SPLICESCREEN, -1, pszJsonBuf.get(), strlen(pszJsonBuf.get()), NULL, NULL, 3000))
-				{
-					std::cout<<"Splice Screens config success!"<<std::endl;
-				}
-				
-			}
-#endif
-		}
-		else{
-			std::cout<<"MonitorWall config failed!"<<std::endl;
-		}
-	}
-}
-#endif
-
-
 //////////////////////////////////////////墙操作////////////////////////////////////////////////////
-void DHDecoder::TVSwitch() {
+void DHDecoder::SplitTV() {
 
 	//控制TV1输出的画面分割，进行四画面分割，并把解码~4通道在该TV显示
 	int nMonitorID = 0;

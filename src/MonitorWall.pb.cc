@@ -15,6 +15,7 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 extern PROTOBUF_INTERNAL_EXPORT_MonitorWall_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_blockMes_MonitorWall_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_MonitorWall_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_loginRequest_MonitorWall_2eproto;
 namespace MonitorWall {
 class emptyDefaultTypeInternal {
  public:
@@ -62,8 +63,9 @@ static void InitDefaultsscc_info_decoderOutTVNumResponse_MonitorWall_2eproto() {
   ::MonitorWall::decoderOutTVNumResponse::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_decoderOutTVNumResponse_MonitorWall_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_decoderOutTVNumResponse_MonitorWall_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_decoderOutTVNumResponse_MonitorWall_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_decoderOutTVNumResponse_MonitorWall_2eproto}, {
+      &scc_info_loginRequest_MonitorWall_2eproto.base,}};
 
 static void InitDefaultsscc_info_empty_MonitorWall_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -104,9 +106,10 @@ static void InitDefaultsscc_info_wallConfigRequest_MonitorWall_2eproto() {
   ::MonitorWall::wallConfigRequest::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_wallConfigRequest_MonitorWall_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_wallConfigRequest_MonitorWall_2eproto}, {
-      &scc_info_blockMes_MonitorWall_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_wallConfigRequest_MonitorWall_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_wallConfigRequest_MonitorWall_2eproto}, {
+      &scc_info_blockMes_MonitorWall_2eproto.base,
+      &scc_info_loginRequest_MonitorWall_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_MonitorWall_2eproto[5];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_MonitorWall_2eproto = nullptr;
@@ -133,6 +136,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_MonitorWall_2eproto::offsets[]
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::MonitorWall::decoderOutTVNumResponse, tv_num_),
+  PROTOBUF_FIELD_OFFSET(::MonitorWall::decoderOutTVNumResponse, login_res_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::MonitorWall::blockMes, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -149,13 +153,14 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_MonitorWall_2eproto::offsets[]
   PROTOBUF_FIELD_OFFSET(::MonitorWall::wallConfigRequest, line_),
   PROTOBUF_FIELD_OFFSET(::MonitorWall::wallConfigRequest, colunm_),
   PROTOBUF_FIELD_OFFSET(::MonitorWall::wallConfigRequest, block_),
+  PROTOBUF_FIELD_OFFSET(::MonitorWall::wallConfigRequest, login_res_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::MonitorWall::empty)},
   { 5, -1, sizeof(::MonitorWall::loginRequest)},
   { 14, -1, sizeof(::MonitorWall::decoderOutTVNumResponse)},
-  { 20, -1, sizeof(::MonitorWall::blockMes)},
-  { 28, -1, sizeof(::MonitorWall::wallConfigRequest)},
+  { 21, -1, sizeof(::MonitorWall::blockMes)},
+  { 29, -1, sizeof(::MonitorWall::wallConfigRequest)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -170,18 +175,20 @@ const char descriptor_table_protodef_MonitorWall_2eproto[] PROTOBUF_SECTION_VARI
   "\n\021MonitorWall.proto\022\013MonitorWall\"\007\n\005empt"
   "y\"g\n\014loginRequest\022\022\n\ndecoder_ip\030\001 \001(\t\022\024\n"
   "\014decoder_port\030\002 \001(\r\022\030\n\020decoder_username\030"
-  "\003 \001(\t\022\023\n\013decoder_pwd\030\004 \001(\t\")\n\027decoderOut"
-  "TVNumResponse\022\016\n\006tv_num\030\001 \001(\005\"@\n\010blockMe"
-  "s\022\021\n\tbind_line\030\001 \001(\005\022\020\n\010bind_col\030\002 \001(\005\022\017"
-  "\n\007bind_ch\030\003 \001(\005\"W\n\021wallConfigRequest\022\014\n\004"
-  "line\030\001 \001(\005\022\016\n\006colunm\030\002 \001(\005\022$\n\005block\030\003 \003("
-  "\0132\025.MonitorWall.blockMes2\327\001\n\017SWKJMonitor"
-  "Wall\0228\n\005login\022\031.MonitorWall.loginRequest"
-  "\032\022.MonitorWall.empty\"\000\022F\n\010getTVNum\022\022.Mon"
-  "itorWall.empty\032$.MonitorWall.decoderOutT"
-  "VNumResponse\"\000\022B\n\ncreateWall\022\036.MonitorWa"
-  "ll.wallConfigRequest\032\022.MonitorWall.empty"
-  "\"\000b\006proto3"
+  "\003 \001(\t\022\023\n\013decoder_pwd\030\004 \001(\t\"W\n\027decoderOut"
+  "TVNumResponse\022\016\n\006tv_num\030\001 \001(\005\022,\n\tlogin_r"
+  "es\030\002 \001(\0132\031.MonitorWall.loginRequest\"@\n\010b"
+  "lockMes\022\021\n\tbind_line\030\001 \001(\005\022\020\n\010bind_col\030\002"
+  " \001(\005\022\017\n\007bind_ch\030\003 \001(\005\"\205\001\n\021wallConfigRequ"
+  "est\022\014\n\004line\030\001 \001(\005\022\016\n\006colunm\030\002 \001(\005\022$\n\005blo"
+  "ck\030\003 \003(\0132\025.MonitorWall.blockMes\022,\n\tlogin"
+  "_res\030\004 \001(\0132\031.MonitorWall.loginRequest2\336\001"
+  "\n\017SWKJMonitorWall\0228\n\005login\022\031.MonitorWall"
+  ".loginRequest\032\022.MonitorWall.empty\"\000\022M\n\010g"
+  "etTVNum\022\031.MonitorWall.loginRequest\032$.Mon"
+  "itorWall.decoderOutTVNumResponse\"\000\022B\n\ncr"
+  "eateWall\022\036.MonitorWall.wallConfigRequest"
+  "\032\022.MonitorWall.empty\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_MonitorWall_2eproto_deps[1] = {
 };
@@ -195,7 +202,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Mon
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_MonitorWall_2eproto_once;
 static bool descriptor_table_MonitorWall_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_MonitorWall_2eproto = {
-  &descriptor_table_MonitorWall_2eproto_initialized, descriptor_table_protodef_MonitorWall_2eproto, "MonitorWall.proto", 570,
+  &descriptor_table_MonitorWall_2eproto_initialized, descriptor_table_protodef_MonitorWall_2eproto, "MonitorWall.proto", 670,
   &descriptor_table_MonitorWall_2eproto_once, descriptor_table_MonitorWall_2eproto_sccs, descriptor_table_MonitorWall_2eproto_deps, 5, 0,
   schemas, file_default_instances, TableStruct_MonitorWall_2eproto::offsets,
   file_level_metadata_MonitorWall_2eproto, 5, file_level_enum_descriptors_MonitorWall_2eproto, file_level_service_descriptors_MonitorWall_2eproto,
@@ -666,11 +673,18 @@ void loginRequest::InternalSwap(loginRequest* other) {
 // ===================================================================
 
 void decoderOutTVNumResponse::InitAsDefaultInstance() {
+  ::MonitorWall::_decoderOutTVNumResponse_default_instance_._instance.get_mutable()->login_res_ = const_cast< ::MonitorWall::loginRequest*>(
+      ::MonitorWall::loginRequest::internal_default_instance());
 }
 class decoderOutTVNumResponse::_Internal {
  public:
+  static const ::MonitorWall::loginRequest& login_res(const decoderOutTVNumResponse* msg);
 };
 
+const ::MonitorWall::loginRequest&
+decoderOutTVNumResponse::_Internal::login_res(const decoderOutTVNumResponse* msg) {
+  return *msg->login_res_;
+}
 decoderOutTVNumResponse::decoderOutTVNumResponse()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -680,12 +694,20 @@ decoderOutTVNumResponse::decoderOutTVNumResponse(const decoderOutTVNumResponse& 
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_login_res()) {
+    login_res_ = new ::MonitorWall::loginRequest(*from.login_res_);
+  } else {
+    login_res_ = nullptr;
+  }
   tv_num_ = from.tv_num_;
   // @@protoc_insertion_point(copy_constructor:MonitorWall.decoderOutTVNumResponse)
 }
 
 void decoderOutTVNumResponse::SharedCtor() {
-  tv_num_ = 0;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_decoderOutTVNumResponse_MonitorWall_2eproto.base);
+  ::memset(&login_res_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&tv_num_) -
+      reinterpret_cast<char*>(&login_res_)) + sizeof(tv_num_));
 }
 
 decoderOutTVNumResponse::~decoderOutTVNumResponse() {
@@ -694,6 +716,7 @@ decoderOutTVNumResponse::~decoderOutTVNumResponse() {
 }
 
 void decoderOutTVNumResponse::SharedDtor() {
+  if (this != internal_default_instance()) delete login_res_;
 }
 
 void decoderOutTVNumResponse::SetCachedSize(int size) const {
@@ -711,6 +734,10 @@ void decoderOutTVNumResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  if (GetArenaNoVirtual() == nullptr && login_res_ != nullptr) {
+    delete login_res_;
+  }
+  login_res_ = nullptr;
   tv_num_ = 0;
   _internal_metadata_.Clear();
 }
@@ -726,6 +753,13 @@ const char* decoderOutTVNumResponse::_InternalParse(const char* ptr, ::PROTOBUF_
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           tv_num_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .MonitorWall.loginRequest login_res = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_login_res(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -761,6 +795,14 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_tv_num(), target);
   }
 
+  // .MonitorWall.loginRequest login_res = 2;
+  if (this->has_login_res()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::login_res(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -776,6 +818,13 @@ size_t decoderOutTVNumResponse::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // .MonitorWall.loginRequest login_res = 2;
+  if (this->has_login_res()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *login_res_);
+  }
 
   // int32 tv_num = 1;
   if (this->tv_num() != 0) {
@@ -815,6 +864,9 @@ void decoderOutTVNumResponse::MergeFrom(const decoderOutTVNumResponse& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.has_login_res()) {
+    _internal_mutable_login_res()->::MonitorWall::loginRequest::MergeFrom(from._internal_login_res());
+  }
   if (from.tv_num() != 0) {
     _internal_set_tv_num(from._internal_tv_num());
   }
@@ -841,6 +893,7 @@ bool decoderOutTVNumResponse::IsInitialized() const {
 void decoderOutTVNumResponse::InternalSwap(decoderOutTVNumResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(login_res_, other->login_res_);
   swap(tv_num_, other->tv_num_);
 }
 
@@ -1092,11 +1145,18 @@ void blockMes::InternalSwap(blockMes* other) {
 // ===================================================================
 
 void wallConfigRequest::InitAsDefaultInstance() {
+  ::MonitorWall::_wallConfigRequest_default_instance_._instance.get_mutable()->login_res_ = const_cast< ::MonitorWall::loginRequest*>(
+      ::MonitorWall::loginRequest::internal_default_instance());
 }
 class wallConfigRequest::_Internal {
  public:
+  static const ::MonitorWall::loginRequest& login_res(const wallConfigRequest* msg);
 };
 
+const ::MonitorWall::loginRequest&
+wallConfigRequest::_Internal::login_res(const wallConfigRequest* msg) {
+  return *msg->login_res_;
+}
 wallConfigRequest::wallConfigRequest()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -1107,6 +1167,11 @@ wallConfigRequest::wallConfigRequest(const wallConfigRequest& from)
       _internal_metadata_(nullptr),
       block_(from.block_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_login_res()) {
+    login_res_ = new ::MonitorWall::loginRequest(*from.login_res_);
+  } else {
+    login_res_ = nullptr;
+  }
   ::memcpy(&line_, &from.line_,
     static_cast<size_t>(reinterpret_cast<char*>(&colunm_) -
     reinterpret_cast<char*>(&line_)) + sizeof(colunm_));
@@ -1115,9 +1180,9 @@ wallConfigRequest::wallConfigRequest(const wallConfigRequest& from)
 
 void wallConfigRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_wallConfigRequest_MonitorWall_2eproto.base);
-  ::memset(&line_, 0, static_cast<size_t>(
+  ::memset(&login_res_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&colunm_) -
-      reinterpret_cast<char*>(&line_)) + sizeof(colunm_));
+      reinterpret_cast<char*>(&login_res_)) + sizeof(colunm_));
 }
 
 wallConfigRequest::~wallConfigRequest() {
@@ -1126,6 +1191,7 @@ wallConfigRequest::~wallConfigRequest() {
 }
 
 void wallConfigRequest::SharedDtor() {
+  if (this != internal_default_instance()) delete login_res_;
 }
 
 void wallConfigRequest::SetCachedSize(int size) const {
@@ -1144,6 +1210,10 @@ void wallConfigRequest::Clear() {
   (void) cached_has_bits;
 
   block_.Clear();
+  if (GetArenaNoVirtual() == nullptr && login_res_ != nullptr) {
+    delete login_res_;
+  }
+  login_res_ = nullptr;
   ::memset(&line_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&colunm_) -
       reinterpret_cast<char*>(&line_)) + sizeof(colunm_));
@@ -1181,6 +1251,13 @@ const char* wallConfigRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // .MonitorWall.loginRequest login_res = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_login_res(), ptr);
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1229,6 +1306,14 @@ failure:
       InternalWriteMessage(3, this->_internal_block(i), target, stream);
   }
 
+  // .MonitorWall.loginRequest login_res = 4;
+  if (this->has_login_res()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::login_res(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -1250,6 +1335,13 @@ size_t wallConfigRequest::ByteSizeLong() const {
   for (const auto& msg : this->block_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // .MonitorWall.loginRequest login_res = 4;
+  if (this->has_login_res()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *login_res_);
   }
 
   // int32 line = 1;
@@ -1298,6 +1390,9 @@ void wallConfigRequest::MergeFrom(const wallConfigRequest& from) {
   (void) cached_has_bits;
 
   block_.MergeFrom(from.block_);
+  if (from.has_login_res()) {
+    _internal_mutable_login_res()->::MonitorWall::loginRequest::MergeFrom(from._internal_login_res());
+  }
   if (from.line() != 0) {
     _internal_set_line(from._internal_line());
   }
@@ -1328,6 +1423,7 @@ void wallConfigRequest::InternalSwap(wallConfigRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   block_.InternalSwap(&other->block_);
+  swap(login_res_, other->login_res_);
   swap(line_, other->line_);
   swap(colunm_, other->colunm_);
 }

@@ -28,8 +28,7 @@ CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o: ../src/Monito
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o: ../include/MonitorWall.pb.h
 CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o: ../src/MonitorWall.pb.cc
 
-CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o: ../src/SWKJ_Decoder.cpp
-
 CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o: ../include/Utils.h
+CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o: ../include/dhnetsdk.h
 CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o: ../src/Utils.cpp
 

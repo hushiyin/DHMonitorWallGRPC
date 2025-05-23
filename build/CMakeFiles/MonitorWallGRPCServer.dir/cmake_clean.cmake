@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/MonitorWallGRPCServer.dir/src/GRPCServer.cpp.o"
   "CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.grpc.pb.cc.o"
   "CMakeFiles/MonitorWallGRPCServer.dir/src/MonitorWall.pb.cc.o"
-  "CMakeFiles/MonitorWallGRPCServer.dir/src/SWKJ_Decoder.cpp.o"
   "CMakeFiles/MonitorWallGRPCServer.dir/src/Utils.cpp.o"
   "MonitorWallGRPCServer"
   "MonitorWallGRPCServer.pdb"

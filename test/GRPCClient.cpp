@@ -31,10 +31,15 @@ public:
         }
     }
 
-    int ClientGetTVNum()
+    int ClientGetTVNum(const std::string& decoderIp, uint32_t decoderPort, const std::string& username, const std::string& password)
     {
-        MonitorWall::empty request;
+        MonitorWall::loginRequest request;
         MonitorWall::decoderOutTVNumResponse response;
+
+        request.set_decoder_ip(decoderIp);
+        request.set_decoder_port(decoderPort);
+        request.set_decoder_username(username);
+        request.set_decoder_pwd(password);
 
         grpc::ClientContext context;
         grpc::Status status = stub_->getTVNum(&context, request, &response);
@@ -50,7 +55,7 @@ public:
         }
     }
 
-    void ClientCreateWall(int line, int colunm, const std::vector<MonitorWall::blockMes>& blocks)
+    void ClientCreateWall(int line, int colunm, const std::vector<MonitorWall::blockMes>& blocks, MonitorWall::loginRequest* res)
     {
         // 创建请求
         MonitorWall::wallConfigRequest request;
@@ -62,6 +67,8 @@ public:
         for (const auto& block : blocks) {
             *request.add_block() = block;
         }
+
+        request.mutable_login_res()->CopyFrom(*res);
 
         grpc::ClientContext context;
         grpc::Status status = stub_->createWall(&context, request, &response);
@@ -92,28 +99,33 @@ int main(int argc, char** argv) {
     std::string password = argv[4];
 
     // 创建客户端
-    MonitorWallClient client(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+    MonitorWallClient client(grpc::CreateChannel("192.168.17.63:50051", grpc::InsecureChannelCredentials()));
 
     // 调用登录方法
-    client.ClientLogin(decoderIp, decoderPort, username, password);
-    int decoderTVNum = client.ClientGetTVNum();
+    // client.ClientLogin(decoderIp, decoderPort, username, password);
+    int decoderTVNum = client.ClientGetTVNum(decoderIp, decoderPort, username, password);
     std::cout<<decoderTVNum<<std::endl;
 
+    //创建电视墙
     std::vector<MonitorWall::blockMes> block_vec;
     MonitorWall::blockMes block1;
     block1.set_bind_line(0);
     block1.set_bind_col(0);
     block1.set_bind_ch(1);
-
     MonitorWall::blockMes block2;
     block2.set_bind_line(0);
     block2.set_bind_col(1);
     block2.set_bind_ch(0);
-
     block_vec.emplace_back(block1);
     block_vec.emplace_back(block2);
 
-    client.ClientCreateWall(1, 2, block_vec);
+    MonitorWall::loginRequest res;
+    res.set_decoder_ip(decoderIp);
+    res.set_decoder_port(decoderPort);
+    res.set_decoder_username(username);
+    res.set_decoder_pwd(password);
+
+    client.ClientCreateWall(1, 2, block_vec, &res);
 
     return 0;
 }
