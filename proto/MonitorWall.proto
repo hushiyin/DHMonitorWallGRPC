@@ -1,0 +1,287 @@
+syntax = "proto3";
+
+package MonitorWall;
+
+//定义方法
+service SWKJMonitorWall{
+    /**
+    * @ brief 登录解码器（无需客户端调用）
+    */
+    rpc login (loginRequest) returns (codeResponse) {}
+    /**
+    * @ brief 验证是否登录（无需客户端调用）
+    */
+    rpc checkLogin (loginRequest) returns (codeResponse) {}
+    /**
+    * @ brief 获取解码器输出通道数
+    */
+    rpc getTVNum (loginRequest) returns (decoderOutTVNumResponse) {}
+    /**
+    * @ brief 创建电视墙
+    */
+    rpc createWall (wallConfigRequest) returns (tvMesResponse) {}
+    /**
+    * @ brief 绑定信号源
+    */
+    rpc setVideoSource (setSourceRequest) returns (codeResponse) {}
+    /**
+    * @ brief 解绑信号源
+    */
+    rpc delVideoSource (delSourceRequset) returns (codeResponse) {}
+    /**
+    * @ brief 查询信号源
+    */
+    rpc searchDev (empty) returns (searchDevRequest) {}
+    /**
+    * @ brief 显示信息
+    */
+    rpc getDisplayMes (loginRequest) returns (allWindowDisplayMesResponse) {}
+    /**
+    * @ brief 查询已绑定输出口的状态
+    */ 
+    rpc getTVStatus (loginRequest) returns (tvMesResponse) {}
+    /**
+    * @ brief 分割窗口
+    */ 
+    rpc splitWindow (splitWindowRequest) returns (codeResponse) {}
+    /**
+    * @ brief 查询窗口帧率
+    */ 
+    rpc queryWindowStreamInfo (loginRequest) returns (windowSreamInfoResponse) {}
+}
+
+//////////////////////////////////////////墙设置//////////////////////////////////////////
+
+/**
+* @brief 用于没有参数或者没有返回值的方法
+*/
+message empty {}
+
+/**
+* @brief：错误处理
+* @code：错误码
+* @code_describe：错误描述
+*/
+message codeResponse{
+    int32 code = 1;
+    string code_describe = 2;
+}
+
+/**
+* @brief 登录解码器的请求参数
+* @decoder_ip IP地址
+* @decoder_port 端口
+* @decoder_username 用户名
+* @decoder_pwd 密码
+*/
+message loginRequest{
+    string decoder_ip = 1;
+    uint32 decoder_port = 2;
+    string decoder_username = 3;
+    string decoder_pwd = 4;
+}
+
+/**
+* @brief 解码器tv信息
+* @tv_name tv名，如“hdmi1”
+* @cnannel_id tv通道id
+*/
+message outTV{
+    string tv_name = 1;
+    int32 cnannel_id = 2;
+}
+
+/**
+* @brief 获取输出口
+* @tv_num tv数量
+* @tv_info 解码器tv信息
+*/
+message decoderOutTVNumResponse{
+    int32 tv_num = 1;
+    repeated outTV tv_info = 2;
+    codeResponse code_info = 3;
+}
+
+/**
+* @brief block的坐标和需要绑定的输出口通道号
+* @bind_line 电视墙行坐标
+* @bind_col 电视墙列坐标
+* @bind_ch 解码器输出口通道号
+*/
+message blockMes{
+    int32 bind_line = 1;
+    int32 bind_col = 2;
+    int32 bind_ch = 3;
+}
+
+/**
+* @brief 创建电视墙的请求参数
+* @block_num 需要创建的块数量
+* @block block的坐标和需要绑定的输出口通道号
+*/
+message wallConfigRequest{
+    int32 block_num = 1;
+    repeated blockMes block = 2;
+    loginRequest login_res = 3;
+}
+
+/**
+* @ brief 输出口和块的绑定信息
+* @ out_tv_id：输出口id
+* @ is_bind：该输出口是否被绑定
+* @ block_line 块的横坐标
+* @ block_col 块的纵坐标
+*/
+message tvList{
+    int32 out_tv_id = 1;
+    bool is_bind = 2;
+    int32 block_line = 3;
+    int32 block_col = 4;
+}
+
+/**
+* @ brief 返回每个输出口和块的绑定信息
+*/
+message tvMesResponse{
+    repeated tvList tv_list = 1;
+    codeResponse code_info = 2;
+}
+
+////////////////////////////////////////////////////墙操作//////////////////////////////////////////
+
+/**
+* @ brief 用于信号源相关的操作（绑定、解绑）
+* @ channel_id：解码器输出通道号
+* @ window_id：窗口id（从0开始）
+*/
+message sourceCommonRequest{
+    int32 channel_id = 1;
+    int32 window_id = 2;
+}
+
+/**
+* @ brief 前端设备的信息
+* @ dev_ip：信号源ip
+* @ dev_port：信号源端口号
+* @ dev_user：信号源登录用户名
+* @ dev_pwd：信号源登录密码
+* @ dev_channel_id：信号源通道号
+*/
+message devMes{
+    string dev_ip = 1;
+    int32 dev_port = 2;
+    string dev_user = 3;
+    string dev_pwd = 4;
+    int32 dev_channel_id = 5;
+}
+
+/**
+* @ brief 设置信号源的请求参数
+*/
+message setSourceRequest{
+    loginRequest login_res = 1;
+    sourceCommonRequest source_res = 2;
+    devMes dev_mes = 3;
+}
+
+/**
+* @ brief 信号源解绑
+* @ del_mode:解绑模式（1：单个解绑信号源   2：解绑某个快的信号源   3：批量解绑信号源）
+* 备注：
+        1)批量删除时，source_res可不赋值，直接创建空对象传入
+        2)解绑一个块上的所有信号源，只需传入sourceCommonRequest中的channel_id
+          window_id字段不用赋值
+*/
+message delSourceRequset{
+    sourceCommonRequest source_res = 1;
+    int32 del_mode = 2;
+    loginRequest login_res = 3;
+}
+
+message searchDevRequest{
+    repeated devMes dev_mes = 1;
+    codeResponse code_info = 2;
+}
+
+/**
+* @ brief：窗口分割（1，2，4，6，8，9，16，25）
+* @ tv_id：输出口
+* @ spilt_num：分割数量
+*/
+message splitWindowRequest{
+    int32 tv_id = 1;
+    int32 spilt_num = 2;
+    loginRequest login_res = 3;
+}
+
+/////////////////////////////////////////////////////////////查询窗口显示信息////////////////////////////////////////////////////////
+/**
+* @ brief：摄像头的信息
+* @ camera_name：名称
+* @ stream_type：码流类型。-1-自动, 0-主码流, 1-辅码流1, 2-辅码流2, 3-辅码流3, 4-snap
+* @ camera_ip：ip
+* @ camera_channel：通道
+* @ win_id：窗口id
+*/
+message cameraMessage{
+    string camera_name = 1;
+    int32 stream_type = 2;
+    string camera_ip = 3;
+    int32 camera_channel = 4;
+    int32 win_id = 5;
+}
+
+/**
+* @ brief 某个输出口的某个窗口的显示信息
+* @ out_tv_id：输出口id
+* @ win_num：窗口数量
+*/
+message oneWindeosDispalyMes{
+    int32 out_tv_id = 1;
+    int32 win_num = 2;
+    bool is_bind = 3;
+    int32 block_line = 4;
+    int32 block_col = 5;
+    repeated cameraMessage cam_mes = 6;
+}
+
+/**
+* @ brief 所有窗口的显示信息
+*/
+message allWindowDisplayMesResponse{
+    repeated oneWindeosDispalyMes one_win_mes = 1;
+    codeResponse code_info = 2;
+}
+
+/**
+* @ brief 窗口流信息
+* @ window_id：窗口id
+* @ bit_rate：码率
+* @ frame_rate：帧率
+* @ resolution：分辨率
+* @ compression：编码方式
+*/
+message windowStreamInfo{
+    int32 window_id = 1;
+    int32 bit_rate = 2;
+    int32 frame_rate = 3;
+    string resolution = 4;
+    string compression = 5;
+}
+
+/**
+* @ brief 块的信息
+*/
+message blockStreamInfo{
+    int32 tv_id = 1;
+    repeated windowStreamInfo win_stream_info = 2;
+}
+
+/**
+* @ brief 窗口流信息
+*/
+message windowSreamInfoResponse{
+    repeated blockStreamInfo block_stream_info = 1;
+    codeResponse code_info = 2;
+    loginRequest login_res = 3;
+}
