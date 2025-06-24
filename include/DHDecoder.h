@@ -89,6 +89,8 @@ public:
 	int m_nChannelID;					//摄像头通道号
 	DH_RealPlayType m_emRealPlayType;	//实时预览类型
 
+	bool m_closeWin = false;
+
 	int code = 0;						//c错误码
 	std::vector<std::shared_ptr<Block>> m_vBlock;	//块信息数组
 };

@@ -99,9 +99,11 @@ public:
     }
 
     Status delVideoSource(ServerContext* context, const MonitorWall::delSourceRequset* request, MonitorWall::codeResponse* response) override {
+        std::cout<<"delVideoSource"<<std::endl;
         dhDecoderPtr->code = 0;
         checkLogin(context, &request->login_res(), response);
 
+        std::cout<<"request->del_mode()!"<<request->del_mode()<<std::endl;
         switch(request->del_mode()){
             case 1: //单个解绑
                 dhDecoderPtr->delSource(request->source_res().channel_id(), request->source_res().window_id());

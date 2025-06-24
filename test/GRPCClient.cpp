@@ -127,13 +127,16 @@ public:
     void ClientDelSource(MonitorWall::loginRequest* res, MonitorWall::sourceCommonRequest* source)
     {
         MonitorWall::delSourceRequset delResquest;
-        delResquest.set_del_mode(3);
+        delResquest.set_del_mode(1);
         delResquest.mutable_login_res()->CopyFrom(*res);
         delResquest.mutable_source_res()->CopyFrom(*source);
         MonitorWall::codeResponse response;
 
         grpc::ClientContext context;
         grpc::Status status = stub_->delVideoSource(&context, delResquest, &response);
+
+        std::cout<<"response.code(): "<<response.code()<<std::endl;
+        std::cout<<"code_describe(): "<<response.code_describe()<<std::endl;
 
         if (status.ok()) {
             std::cout << "del source successful!" << std::endl;
@@ -274,7 +277,7 @@ int main(int argc, char** argv) {
     std::string password = "swkj@2024";
 
     // 创建客户端
-    MonitorWallClient client(grpc::CreateChannel("192.168.17.24:50051", grpc::InsecureChannelCredentials()));
+    MonitorWallClient client(grpc::CreateChannel("192.168.17.46:50051", grpc::InsecureChannelCredentials()));
 
     // client.ClientLogin(decoderIp, decoderPort, username, password);
 
@@ -307,8 +310,8 @@ int main(int argc, char** argv) {
 
     //解绑信号源
     MonitorWall::sourceCommonRequest sourceRequest;
-    // sourceRequest.set_channel_id(0);
-    // sourceRequest.set_window_id(0);
+    sourceRequest.set_channel_id(0);
+    sourceRequest.set_window_id(0);
     client.ClientDelSource(&res, &sourceRequest);
 
     //获取电视墙配置

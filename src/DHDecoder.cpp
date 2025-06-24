@@ -302,22 +302,27 @@ void DHDecoder::delSource(int Chn, int WinID) {
 		code = getLastErrorCode();
 		return;
 	}
-
-	closeWindow(Chn, WinID);
+	if(m_closeWin){
+		closeWindow(Chn, WinID);
+	}
+	// closeWindow(Chn, WinID);
 }
 
 //解绑一个块的所有信号源
 void DHDecoder::delSource(int Chn){
+	m_closeWin = true;
 	if(getWindowsInfo(Chn) > 0 && getWindowsInfo(Chn) == vwinID.size())	//有打开的窗口，并且开窗的数量等于保存的窗口ID数
 	{
 		for(int j = 0; j < vwinID.size(); j++){
 			delSource(Chn, vwinID[j]);
 		}
 	}
+	m_closeWin = false;
 }
 
 //批量解绑信号源
 void DHDecoder::delSource() {
+	m_closeWin = true;
 	int TVNums = queryDecoderInfo();
 	for(int i = 0; i < TVNums; i++){
 		if(getWindowsInfo(i) > 0 && getWindowsInfo(i) == vwinID.size()){	//有打开的窗口，并且开窗的数量等于保存的窗口ID数
@@ -326,6 +331,7 @@ void DHDecoder::delSource() {
 			}
 		}
 	}
+	m_closeWin = false;
 }
 
 //获取窗口数和窗口ID
